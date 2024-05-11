@@ -15,10 +15,10 @@ import os, shutil, scipy.io
 from model import *
 
 # configure args
-tf.set_random_seed(SEED)
-config = tf.ConfigProto()
+tf.compat.v1.set_random_seed(SEED)
+config = tf.compat.v1.ConfigProto()
 config.gpu_options.allow_growth = True
-sess = tf.Session(config=config)
+sess = tf.compat.v1.Session(config=config)
 K.set_session(sess)
 K.set_learning_phase(0)
 

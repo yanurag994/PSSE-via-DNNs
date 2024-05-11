@@ -12,7 +12,7 @@ from keras.models import Model
 from keras.layers import Dense, Activation, add, Dropout, Lambda
 from keras.layers import Input, average
 from keras import backend as K
-from keras.layers.normalization import BatchNormalization
+from keras.layers.normalization import batch_normalization
 
 
 def huber_loss(y_true, y_pred, clip_delta=1.0):
@@ -54,7 +54,7 @@ def nn1_psse(input_shape, num_classes, weights=None):
     model = Model(inputs=data, outputs=predictions)
     if weights is not None:
         model.load_weights(weights)
-    sgd = optimizers.adam(lr=0.001)
+    sgd = optimizers.Adam(learning_rate=0.001)
 
 #    sgd = optimizers.SGD(lr=0.001, momentum=0.9, nesterov=True)
 
@@ -86,7 +86,7 @@ def nn1_8H_psse(input_shape, num_classes, weights=None):
     model = Model(inputs=data, outputs=predictions)
     if weights is not None:
         model.load_weights(weights)
-    sgd = optimizers.adam(lr=0.001)
+    sgd = optimizers.Adam(learning_rate=0.001)
 
 #    sgd = optimizers.SGD(lr=0.001, momentum=0.9, nesterov=True)
 
@@ -132,7 +132,7 @@ def lav_psse(input_shape, num_classes, weights=None):
     model = Model(inputs=data, outputs=predictions)
     if weights is not None:
         model.load_weights(weights)
-    sgd = optimizers.adam(lr=0.001)
+    sgd = optimizers.Adam(learning_rate=0.001)
 
     model.compile(optimizer=sgd, loss=huber_loss_mean,
                   metrics=['mae'])
@@ -164,7 +164,7 @@ def st_lav_psse(input_shape, num_classes, weights=None):
     model = Model(inputs=data, outputs=predictions)
     if weights is not None:
         model.load_weights(weights)
-    sgd = optimizers.adam(lr=0.001)
+    sgd = optimizers.Adam(learning_rate=0.001)
 
     model.compile(optimizer=sgd, loss=huber_loss_mean,
                   metrics=['mae'])
